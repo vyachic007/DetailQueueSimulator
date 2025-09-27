@@ -5,7 +5,8 @@ import by.slava_borisov.lab1.Queue;
 
 public class ArrayQueue implements Queue {
 
-    private Detail[] element = new Detail[5];
+    private static final int CAPACITY = 5;
+    private Detail[] element = new Detail[CAPACITY];
     private int head;
     private int tail;
     private int size;
@@ -19,22 +20,22 @@ public class ArrayQueue implements Queue {
 
     @Override
     public boolean enqueue(Detail item) {
-        if (size == element.length) {
+        if (isFull()) {
             return false;
         }
         element[tail] = item;
-        tail = (tail + 1) % element.length;
+        tail = (tail + 1) % CAPACITY;
         size++;
         return true;
     }
 
     @Override
     public Detail dequeue() {
-        if (size == 0) {
+        if (isEmpty()) {
             return null;
         }
         Detail item = element[head];
-        head = (head + 1) % element.length;
+        head = (head + 1) % CAPACITY;
         size--;
         return item;
     }
@@ -46,14 +47,14 @@ public class ArrayQueue implements Queue {
 
     @Override
     public boolean isFull() {
-        return size == element.length;
+        return size == CAPACITY;
     }
 
     @Override
     public Detail[] toArray() {
         Detail[] result = new Detail[size];
         for (int i = 0; i < size; i++) {
-            result[i] = element[(head + i) % element.length];
+            result[i] = element[(head + i) % CAPACITY];
         }
         return result;
     }

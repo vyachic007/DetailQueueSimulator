@@ -1,6 +1,7 @@
 package by.slava_borisov.lab1;
 
 import by.slava_borisov.lab1.array.ArrayQueue;
+import by.slava_borisov.lab1.linked.LinkedQueue;
 
 import java.util.Scanner;
 
@@ -9,8 +10,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Queue queue = new ArrayQueue();
-        /// Queue queue = new LinkedQueue();
+//        Queue queue = new ArrayQueue();
+        Queue queue = new LinkedQueue();
 
         queue.init();
 

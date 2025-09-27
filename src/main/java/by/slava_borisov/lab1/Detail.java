@@ -1,11 +1,16 @@
 package by.slava_borisov.lab1;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 
 @AllArgsConstructor
-@Data
 public class Detail {
-    private String code;
-    private int time;
+    private final String code;
+    @Getter
+    private final int time;
+
+    @Override
+    public String toString() {
+        return "Код: " + code + ", Время: " + time;
+    }
 }
